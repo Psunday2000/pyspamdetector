@@ -18,5 +18,5 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Username/humans"
-Issues = "https://github.com/Username/humans"
+Homepage = "https://github.com/Psunday2000/pyspamdetector"
+Issues = "https://github.com/Psunday2000/pyspamdetector"
