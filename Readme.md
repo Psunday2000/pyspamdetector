@@ -6,11 +6,22 @@
 
 ## **Table of Contents**
 
-1. [Usage](#usage)
-    - [Basic Usage](#basic-usage)
-    - [Method Descriptions](#method-descriptions)
-2. [License](#license)
-3. [Contributing](#contributing)
+1. [Requirements](#requirements)  
+2. [Usage](#usage)  
+    - [Basic Usage](#basic-usage)  
+    - [Method Descriptions](#method-descriptions)  
+3. [License](#license)  
+4. [Contributing](#contributing)  
+
+---
+
+## **Requirements**
+
+The project has the following requirement:
+
+- `scikit-learn`: Required to load and use the pre-trained model for classification.
+
+Make sure `scikit-learn` is installed in your environment.
 
 ---
 
@@ -38,17 +49,17 @@ print(is_spam)  # Output will be True (Spam) or False (Not Spam)
 ### **Method Descriptions**
 
 1. **`read_text(text: str) -> bool`**  
-   - **Purpose**: Classifies the provided text as Spam or Not Spam.
-   - **Arguments**: `text` (str) - The message you want to classify.
-   - **Returns**: `bool` - `True` for Spam, `False` for Not Spam.
+   - **Purpose**: Classifies the provided text as Spam or Not Spam.  
+   - **Arguments**: `text` (str) - The message you want to classify.  
+   - **Returns**: `bool` - `True` for Spam, `False` for Not Spam.  
 
 2. **`describe_text(text: str) -> dict`**  
-   - **Purpose**: Provides a general description of the message without classifying it.
-   - **Arguments**: `text` (str) - The message you want to describe.
-   - **Returns**: `dict` - A JSON-like dictionary that includes:
-     - The original message.
-     - A classification (`Spam` or `Not Spam`).
-     - An advice or warning about the message's nature.
+   - **Purpose**: Provides a general description of the message without classifying it.  
+   - **Arguments**: `text` (str) - The message you want to describe.  
+   - **Returns**: `dict` - A JSON-like dictionary that includes:  
+     - The original message.  
+     - A classification (`Spam` or `Not Spam`).  
+     - Advice or warning about the message's nature.  
 
 Example:
 
