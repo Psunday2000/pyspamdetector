@@ -16,7 +16,6 @@
 
 import pickle
 import os
-import json
 
 
 class PySpamDetector:
@@ -86,6 +85,6 @@ class PySpamDetector:
             "advice": (
                 "Be cautious! This message appears to be spam. Avoid clicking on links or providing sensitive information."
                 if is_spam
-                else "This message may appear legitimate. However, always verify unexpected messages."
+                else "This message appears to be legitimate. However, always verify unexpected messages."
             ),
         }
