@@ -1,72 +1,45 @@
-# **pyspamdetector**
+# pyspamdetector
 
-`pyspamdetector` is a Python library that allows you to easily classify text messages as **Spam** or **Not Spam** using a pre-trained machine learning model. The library is designed to be simple and intuitive, with built-in methods to classify and describe text messages.
+[![PyPI version](https://img.shields.io/pypi/v/pyspamdetector.svg)](https://pypi.org/project/pyspamdetector/)
+[![Python versions](https://img.shields.io/pypi/pyversions/pyspamdetector.svg)](https://pypi.org/project/pyspamdetector/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
----
+A Python library for detecting spam messages using machine learning. Install it, pass in text, get a prediction.
 
-## **Table of Contents**
+## Install
 
-1. [Requirements](#requirements)  
-2. [Usage](#usage)  
-    - [Basic Usage](#basic-usage)  
-    - [Method Descriptions](#method-descriptions)  
-3. [License](#license)  
-4. [Contributing](#contributing)  
+```
+pip install pyspamdetector
+```
 
----
+## Quick start
 
-## **Requirements**
-
-The project has the following requirement:
-
-- `scikit-learn`: Required to load and use the pre-trained model for classification.
-
-Make sure `scikit-learn` is installed in your environment.
-
----
-
-## **Usage**
-
-Once you have the library installed, you can easily classify text messages. The main features are:
-
-### **Basic Usage**
-
-To classify a message as spam or not, you simply need to import `pyspamdetector` and call the `read_text()` method. Here's an example:
-
-```python
+```
 from pyspamdetector import PySpamDetector
 
-# Instantiate the classifier
 detector = PySpamDetector()
 
 # Classify a message
-is_spam = detector.read_text("Congratulations, you've won a $1000 gift card! Click here to claim your prize.")
-
-# Output classification result
-print(is_spam)  # Output will be True (Spam) or False (Not Spam)
+is_spam = detector.readText("Congratulations, you've won a $1000 gift card! Click here to claim your prize.")
+print(is_spam)  # True
 ```
 
-### **Method Descriptions**
+## API
 
-1. **`read_text(text: str) -> bool`**  
-   - **Purpose**: Classifies the provided text as Spam or Not Spam.  
-   - **Arguments**: `text` (str) - The message you want to classify.  
-   - **Returns**: `bool` - `True` for Spam, `False` for Not Spam.  
+### readText(text: str) -> bool
 
-2. **`describe_text(text: str) -> dict`**  
-   - **Purpose**: Provides a general description of the message without classifying it.  
-   - **Arguments**: `text` (str) - The message you want to describe.  
-   - **Returns**: `dict` - A JSON-like dictionary that includes:  
-     - The original message.  
-     - A classification (`Spam` or `Not Spam`).  
-     - Advice or warning about the message's nature.  
+Classifies a message as spam or not.
 
-Example:
+- Returns: True if spam, False if not.
 
-```python
-description = detector.describe_text("Congratulations, you've won a $1000 gift card! Click here to claim your prize.")
+### describeText(text: str) -> dict
 
-# Example output
+Returns a dictionary with the classification result and a human-readable advice string.
+
+```
+detector.describeText("Congratulations, you've won a $1000 gift card! Click here to claim your prize.")
+
+# Returns:
 {
     "message": "Congratulations, you've won a $1000 gift card! Click here to claim your prize.",
     "classification": "Spam",
@@ -74,16 +47,48 @@ description = detector.describe_text("Congratulations, you've won a $1000 gift c
 }
 ```
 
----
+## How it works
 
-## **License**
+pyspamdetector uses a **Logistic Regression** classifier trained on TF-IDF features extracted from text messages. The model ships pre-trained with the package, so there's nothing to train yourself. Just install and use.
 
-`pyspamdetector` is open-source and released under the GNU General Public License v3 (GPLv3). See the [LICENSE](LICENSE) file for more details.
+### Performance
 
----
+Evaluated on a held-out test set:
 
-## **Contributing**
+| Metric | Score |
+|--------|-------|
+| Test accuracy | 96.6% |
+| Training accuracy | 96.7% |
 
-If you'd like to contribute to the project, feel free to fork the repository and submit a pull request. We welcome improvements and fixes!
+The near-identical train and test accuracy indicates the model generalizes well without overfitting.
 
----
+### Training details
+
+- **Classifier:** Logistic Regression (scikit-learn)
+- **Features:** TF-IDF vectorization
+- **Dataset:** A public spam message dataset
+
+The full training notebook is publicly available on Kaggle: [Spam Model notebook](https://www.kaggle.com/code/nwachipraises/spam-model).
+
+## Requirements
+
+- Python 3.0+
+- scikit-learn
+
+## License
+
+Released under the GNU General Public License v3.0. See [LICENSE](LICENSE) for details.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change.
+
+## Author
+
+Built by **Praise Chiedozie Sunday**.
+
+- Portfolio: [praise-chiedozie-sunday.vercel.app](https://praise-chiedozie-sunday.vercel.app)
+- LinkedIn: [praise-sunday](https://www.linkedin.com/in/praise-sunday-179a86224)
+- GitHub: [@Psunday2000](https://github.com/Psunday2000)
+
+If you find this package useful, a star on [GitHub](https://github.com/Psunday2000/pyspamdetector) is appreciated.
